@@ -1,0 +1,20 @@
+.table {
+  @apply w-full mx-[20px] my-[0] text-[18px] text-right;
+}
+
+.table th,
+.table td {
+  @apply pl-[12px] py-[15px];
+}
+
+.table th {
+  @apply bg-dark-navy font-bold;
+}
+
+.table tr:nth-child(even) {
+  @apply bg-dark-navy;
+}
+
+.table tr:hover {
+  @apply bg-dark-navy;
+}

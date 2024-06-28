@@ -1,0 +1,13 @@
+.file-input {
+    @apply px-[16px] bg-transparent py-[8px] justify-between flex  rounded-[100px] h-[48px];
+  
+    &-white {
+      @apply border-[1px] border-solid bg-white text-black;
+    }
+    &-ghost {
+      @apply w-full border-[1px] justify-between flex  border-solid bg-transparent text-white border-charcoal;
+    }
+    &-error {
+      @apply border-[1px] border-solid border-error;
+    }
+  }

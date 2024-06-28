@@ -1,0 +1,11 @@
+.link {
+  @apply px-8 capitalize  rounded-e-[30px] flex h-[56px] items-center w-full;
+
+  &-active {
+    background-image: linear-gradient(
+      to left,
+      rgba(120, 110, 255, 0.1),
+      rgba(120, 110, 255, 0.3)
+    );
+  }
+}

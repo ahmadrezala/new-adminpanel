@@ -1,0 +1,15 @@
+.dialog-overlay {
+  @apply fixed top-0 left-0 w-full h-[100vh] bg-[rgba(6,5,12,0.7)] flex justify-center items-center;
+
+  > .dialog-content {
+    @apply bg-dark-navy text-center rounded-xl text-white w-[400px] p-[32px];
+
+    > h1 {
+      @apply text-[24px];
+    }
+
+    > div {
+      @apply flex justify-center mt-9 gap-5;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+.btn {
+  @apply p-[12px] flex gap-2 rounded-[100px] duration-300;
+
+  &-ghost {
+    @apply border-[1px] border-solid border-charcoal;
+    @media (hover: hover) {
+      &:hover {
+        @apply dark:border-periwinkle-focus dark:text-periwinkle-focus;
+      }
+    }
+  }
+
+  &-periwinkle {
+    @apply bg-periwinkle;
+    @media (hover: hover) {
+      &:hover {
+        @apply dark:border-periwinkle-focus dark:bg-periwinkle-focus;
+      }
+    }
+  }
+
+  &-charcoal {
+    @apply bg-charcoal;
+    @media (hover: hover) {
+      &:hover {
+        @apply dark:border-charcoal-focus dark:bg-charcoal-focus;
+      }
+    }
+  }
+
+  &-error {
+    @apply bg-error;
+    @media (hover: hover) {
+      &:hover {
+        @apply dark:bg-error;
+      }
+    }
+  }
+
+  &-small {
+    @apply p-[12px] text-[11px];
+  }
+
+  &-md {
+    @apply py-[10px] px-[15px] text-[12px];
+  }
+  &-lg {
+    @apply py-[18px] px-[30px] text-[12px];
+  }
+}

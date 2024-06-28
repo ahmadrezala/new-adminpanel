@@ -1,0 +1,18 @@
+.pagination {
+  @apply flex gap-[0.5rem] text-[14px];
+}
+.pagination button {
+  @apply px-[0.5rem] py-[.5rem] border-[.5px] rounded-md border-solid border-[#ccc] cursor-pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      @apply dark:bg-periwinkle
+    }
+  }
+}
+.pagination button.active {
+  @apply bg-periwinkle-focus;
+}
+.pagination button:disabled {
+  @apply bg-periwinkle-focus cursor-not-allowed;
+}
