@@ -1,5 +1,5 @@
 .file-input {
-    @apply px-[16px] bg-transparent py-[8px] justify-between flex  rounded-[100px] h-[48px];
+    @apply px-[16px] bg-transparent mt-2 py-[8px] justify-between flex  rounded-[100px] h-[48px];
   
     &-white {
       @apply border-[1px] border-solid bg-white text-black;

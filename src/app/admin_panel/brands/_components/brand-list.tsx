@@ -1,82 +1,49 @@
 import React, { useState } from "react";
 import { Brand } from "../_types/brand.interface";
-import { IconPen, IconTrash } from "@/app/_components/icons/icons";
 import { TextPlaceholder } from "@/app/_components/placeholders";
 import { useDeleteBrand } from "../_api/delete-brand";
 import ConfirmDialog from "@/app/_components/confirm-dialog/confirm-dialog";
-import Link from "next/link";
+import BrandTable from "./brand-table";
+
 
 type BrandListProps = {
   brands: Brand[];
   isLoading: boolean;
 };
 
-export default function BrandList({ brands, isLoading }: BrandListProps) {
-  const { mutate, isLoading: isDeleting } = useDeleteBrand();
+const BrandList: React.FC<BrandListProps> = ({ brands, isLoading }) => {
+  const { mutate: deleteBrand, isLoading: isDeleting } = useDeleteBrand();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedBrandId, setSelectedBrandId] = useState<number | null>(null);
-  const [selectedBrandName, setSelectedBrandName] = useState<string>("");
+  const [selectedBrand, setSelectedBrand] = useState<{ id: number; name: string } | null>(null);
 
-  const handleDeleteClick = (id: number, name: string) => {
-    setSelectedBrandId(id);
-    setSelectedBrandName(name);
+  const handleDeleteClick = (brand: Brand) => {
+    setSelectedBrand({ id: brand.id, name: brand.name });
     setIsDialogOpen(true);
   };
 
   const handleConfirmDelete = () => {
-    if (selectedBrandId !== null) {
-      mutate({ id: selectedBrandId });
+    if (selectedBrand) {
+      deleteBrand({ id: selectedBrand.id });
     }
-    setIsDialogOpen(false);
-    setSelectedBrandId(null);
+    handleCloseDialog();
   };
 
-  const handleCancelDelete = () => {
+  const handleCloseDialog = () => {
     setIsDialogOpen(false);
-    setSelectedBrandId(null);
+    setSelectedBrand(null);
   };
 
   return (
     <>
-      {isLoading ? (
-        <TextPlaceholder />
-      ) : (
-        <table className="table mt-[20px]">
-          <thead>
-            <tr>
-              <th>نام</th>
-              <th>اسلاگ</th>
-              <th>عملیات</th>
-            </tr>
-          </thead>
-          <tbody>
-            {brands.map((brand) => (
-              <tr key={brand.id}>
-                <td>{brand.name}</td>
-                <td>{brand.slug}</td>
-                <td>
-                  <div className="flex gap-4">
-                    <IconTrash
-                      width={18}
-                      height={18}
-                      onClick={() => handleDeleteClick(brand.id, brand.name)}
-                    />
-                    <Link href={`brands/update/${brand.id}`}>
-                      <IconPen width={18} height={18} />
-                    </Link>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      {isLoading ? <TextPlaceholder /> : <BrandTable brands={brands} onDeleteClick={handleDeleteClick} />}
       <ConfirmDialog
         isOpen={isDialogOpen}
         onConfirm={handleConfirmDelete}
-        onCancel={handleCancelDelete}
-        message={`آیا مطمئن هستید که می‌خواهید برند ${selectedBrandName} را حذف کنید؟`}
+        onCancel={handleCloseDialog}
+        message={`آیا مطمئن هستید که می‌خواهید برند ${selectedBrand?.name} را حذف کنید؟`}
       />
     </>
   );
-}
+};
+
+export default BrandList;

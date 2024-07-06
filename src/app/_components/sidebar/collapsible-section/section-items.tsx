@@ -8,6 +8,7 @@ import { IconChevronLeft } from "../../icons/icons";
     <div className="pt-[20px] mt-[20px] border-charcoal border-t-[1px]">
       {sections.map((section) => (
         <CollapsibleSection
+          key={section.title}
           title={section.title}
           icon={section.icon}
           links={section.links}

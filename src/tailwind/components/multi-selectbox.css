@@ -1,0 +1,19 @@
+.multi-selectbox {
+  
+    @apply w-full text-white text-base  rounded-[100px] appearance-none;
+  
+  
+  
+    &-white {
+      @apply border-[1px] border-solid w-full py-[8px] px-[16px] rounded-[100px]  h-[48px] bg-white text-black;
+    }
+    &-ghost {
+      @apply border-[1px] appearance-none w-full py-[8px] px-[16px] rounded-[100px]  h-[48px]  border-solid bg-dark-navy text-white border-charcoal;
+    }
+    &-error {
+      @apply border-[1px] border-solid w-full py-[8px] px-[16px] rounded-[100px]  h-[48px] border-error;
+    }
+     >option{
+      @apply bg-dark-navy;
+    }
+  }

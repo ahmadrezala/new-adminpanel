@@ -17,7 +17,7 @@ interface Section {
 type SidebarItem = LinkItem | Section;
 
 export const sidebarItems: SidebarItem[] = [
-  { type: "link", href: "/dashboard", label: "دشبورد", icon: <IconHome /> },
+  { type: "link", href: "/admin_panel", label: "دشبورد", icon: <IconHome /> },
   {
     type: "link",
     href: "/admin_panel/brands",
@@ -26,8 +26,26 @@ export const sidebarItems: SidebarItem[] = [
   },
   {
     type: "link",
-    href: "/dashboard/help",
-    label: "راهنما",
+    href: "/admin_panel/attributes",
+    label: "ویژگی ها",
+    icon: <IconHome />,
+  },
+  {
+    type: "link",
+    href: "/admin_panel/tags",
+    label: "تگ ها",
+    icon: <IconHome />,
+  },
+  {
+    type: "link",
+    href: "/admin_panel/categories",
+    label: "دسته بندی ها",
+    icon: <IconHome />,
+  },
+  {
+    type: "link",
+    href: "/admin_panel/banners",
+    label: "بنر ها",
     icon: <IconHome />,
   },
   {

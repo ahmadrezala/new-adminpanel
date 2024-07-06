@@ -3,7 +3,7 @@ import { Problem } from "@/types/http-errors.interface";
 import { Notification } from "@/types/notification.interface";
 import { MutationCache, QueryCache, QueryClient } from "react-query";
 
-// تابع نمایش اعلان
+
 const showNotifications = (problem: Problem) => {
     const notifications: Omit<Notification, "id">[] = [];
     if (problem?.errors) {
@@ -26,7 +26,7 @@ const showNotifications = (problem: Problem) => {
     showNotification(notifications);
 };
 
-// ساخت QueryClient جدید با تنظیمات
+
 export const queryClient = new QueryClient({
     queryCache: new QueryCache({
         onError: (error: unknown) => {
@@ -46,8 +46,7 @@ export const queryClient = new QueryClient({
             refetchOnWindowFocus: false,
             useErrorBoundary: false,
             cacheTime: 100 * 60 * 60 * 24,
-            // gcTime: 1000 * 60 * 60 * 24, // این خط را حذف کنید
-            staleTime: 1000 * 60 * 60 * 24, // به جای gcTime از staleTime استفاده کنید
+            staleTime: 1000 * 60 * 60 * 24, 
         }
     }
 });

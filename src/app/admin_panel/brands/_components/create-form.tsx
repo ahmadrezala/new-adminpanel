@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 import { Button } from "@/app/_components/button";
 import { TextInput } from "@/app/_components/form-input";
-import { useForm } from "react-hook-form";
-import { useAddBrand } from "../_api/add-brand";
-import { useRouter } from "next/navigation";
-import { AddBrand } from "../_types/brand.interface";
 import SelectBoxInput from "@/app/_components/form-input/selectbox-input/selectbox-input";
+import { useAddBrand } from "../_api/add-brand";
+import { AddBrand } from "../_types/brand.interface";
 
 const CreateForm: React.FC = () => {
   const router = useRouter();
@@ -29,7 +29,7 @@ const CreateForm: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: AddBrand) => {
     addBrand.mutate(data);
   };
 
@@ -39,26 +39,26 @@ const CreateForm: React.FC = () => {
         <TextInput
           rules={{ required: "فیلد نام الزامی است" }}
           errors={errors}
-          label={"نام"}
+          label="نام"
           register={register}
-          name={"name"}
+          name="name"
         />
 
         <TextInput
           rules={{ required: "فیلد نام الزامی است" }}
           errors={errors}
-          label={"اسلاگ"}
+          label="اسلاگ"
           register={register}
-          name={"slug"}
+          name="slug"
         />
 
         <SelectBoxInput
           options={options}
           rules={{ required: "فیلد وضعیت الزامی است" }}
           errors={errors}
-          label={"وضعیت"}
+          label="وضعیت"
           register={register}
-          name={"is_active"}
+          name="is_active"
           variant="ghost"
         />
       </div>

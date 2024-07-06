@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import { SelectBoxProps } from "./selectbox.types";
 import { Size } from "../types/size.type";
 import classNames from "classnames";
@@ -15,14 +15,10 @@ const SelectBox: React.FC<SelectBoxProps> = forwardRef<
   HTMLSelectElement,
   SelectBoxProps
 >(
-  ({
-    options,
-    variant = "ghost",
-    label,
-    className,
-    size = "normal",
-    ...rest
-  },ref) => {
+  (
+    { options, variant = "ghost", label, className, size = "normal", ...rest },
+    ref
+  ) => {
     const classes = classNames(
       "textbox",
       "w-full",
@@ -35,17 +31,21 @@ const SelectBox: React.FC<SelectBoxProps> = forwardRef<
       <div className="relative inline-block w-full">
         <label htmlFor="">{label}</label>
         <select className={classes} ref={ref} {...rest}>
+          <option selected value="">
+            انتخاب کنید...
+          </option>
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </select>
-        <IconChevronLeft className="absolute left-[16px] rotate-[-90deg] bottom-[12px]"/>
-       
+        <IconChevronLeft className="absolute left-[16px] rotate-[-90deg] bottom-[12px]" />
       </div>
     );
   }
 );
+
+SelectBox.displayName = "SelectBox";
 
 export default SelectBox;

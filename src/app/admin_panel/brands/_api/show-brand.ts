@@ -13,8 +13,8 @@ const getBrands = ({ id }: getBrandsOptions): Promise<ShowBrand> => {
 
 }
 
-export const useBrand = ({id}: getBrandsOptions) => {
-    
+export const useBrand = ({ id }: getBrandsOptions) => {
+
     const {
         data,
         error,
@@ -22,15 +22,15 @@ export const useBrand = ({id}: getBrandsOptions) => {
         refetch,
 
     } = useQuery({
-        cacheTime: 7 * 24 * 60 * 60 * 1000, 
-        staleTime: 24 * 60 * 60 * 1000, 
-        keepPreviousData: true, 
+        cacheTime: 7 * 24 * 60 * 60 * 1000,
+        staleTime: 24 * 60 * 60 * 1000,
+        keepPreviousData: true,
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
         queryKey: ['brands', id],
         queryFn: () => getBrands({ id })
-        
+
     })
 
-    return { data, isFetching };
+    return { data, isFetching, error, refetch };
 }

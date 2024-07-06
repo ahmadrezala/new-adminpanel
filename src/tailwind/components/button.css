@@ -29,7 +29,7 @@
   }
 
   &-error {
-    @apply bg-error;
+    @apply bg-error text-white;
     @media (hover: hover) {
       &:hover {
         @apply dark:bg-error;

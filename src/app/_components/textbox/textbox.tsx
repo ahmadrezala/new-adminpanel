@@ -35,7 +35,7 @@ export const Textbox: React.FC<TextboxProps> = forwardRef<
     );
     return (
       <>
-        <label htmlFor="">{label}</label>
+        <label className="mb-2" htmlFor="">{label}</label>
         <input ref={ref} type={type} className={classes} {...rest} />
       </>
     );

@@ -17,7 +17,7 @@ export const useAddBrand = ({ onSuccess }: AddBrandOptions) => {
     const { mutate, isLoading } = useMutation({
         mutationFn: addBrand,
         onSuccess: () => {
-            queryClient.invalidateQueries(['brands', 1]);
+            queryClient.invalidateQueries(['brands']);
             if (onSuccess) onSuccess();
         }
 

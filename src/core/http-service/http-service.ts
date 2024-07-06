@@ -67,7 +67,7 @@ async function createData<TModel, TResult>(
     const options: AxiosRequestConfig = {
         method: "POST",
         headers: headers,
-        data: JSON.stringify(data),
+        data: data instanceof FormData ? data : JSON.stringify(data),
     };
 
     return await apiBase<TResult>(url, options);

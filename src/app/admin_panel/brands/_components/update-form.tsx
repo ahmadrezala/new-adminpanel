@@ -1,4 +1,4 @@
-// در فایل UpdateForm.tsx
+
 "use client";
 
 import React from "react";
@@ -27,7 +27,7 @@ const UpdateForm: React.FC<UpdateFormProps> = ({
     ? parseInt(params.id[0])
     : parseInt(params.id);
 
-  // Check if data exists before accessing its properties
+
   const name = data?.name || "";
   const slug = data?.slug || "";
   const is_active = data?.is_active || "";
