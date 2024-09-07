@@ -1,4 +1,4 @@
-import { IconHome } from "../../icons/icons";
+import { IconAttribute, IconBrand, IconCategory, IconHome, IconTag } from "../../icons/icons";
 
 interface LinkItem {
   type: "link";
@@ -22,30 +22,30 @@ export const sidebarItems: SidebarItem[] = [
     type: "link",
     href: "/admin_panel/brands",
     label: "برندها",
-    icon: <IconHome />,
+    icon: <IconBrand viewBox = '0 -2 24 28' />,
   },
   {
     type: "link",
     href: "/admin_panel/attributes",
     label: "ویژگی ها",
-    icon: <IconHome />,
+    icon: <IconCategory />,
   },
   {
     type: "link",
     href: "/admin_panel/tags",
     label: "تگ ها",
-    icon: <IconHome />,
+    icon: <IconTag viewBox = '0 5 31 24'/>,
   },
   {
     type: "link",
     href: "/admin_panel/categories",
     label: "دسته بندی ها",
-    icon: <IconHome />,
+    icon: <IconCategory />,
   },
   {
     type: "link",
-    href: "/admin_panel/banners",
-    label: "بنر ها",
+    href: "/admin_panel/products",
+    label: "محصولات",
     icon: <IconHome />,
   },
   {
@@ -57,13 +57,5 @@ export const sidebarItems: SidebarItem[] = [
       { type: "link", href: "/dashboard/settings/privacy", label: "فروشندگان" },
     ],
   },
-  {
-    type: "section",
-    title: "تنظیمات",
-    icon: <IconHome />,
-    links: [
-      { type: "link", href: "/dashboard/settings/general", label: "ایتم ها" },
-      { type: "link", href: "/dashboard/settings/privacy", label: "فروشندگان" },
-    ],
-  },
+
 ];

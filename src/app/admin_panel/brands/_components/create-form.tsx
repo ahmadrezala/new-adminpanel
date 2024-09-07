@@ -59,7 +59,6 @@ const CreateForm: React.FC = () => {
           label="وضعیت"
           register={register}
           name="is_active"
-          variant="ghost"
         />
       </div>
 

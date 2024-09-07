@@ -24,13 +24,13 @@ httpService.interceptors.response.use(
     (error) => {
         if (error?.response) {
             const statusCode = error?.response?.status;
-            
+
             if (statusCode >= 400) {
-                
-                
+
+
                 const errorData: ApiError = error.response?.data;
-                // console.log(errorData);
-                
+
+
 
                 errorHandler[statusCode](errorData);
             }
@@ -81,7 +81,7 @@ async function updateData<TModel, TResult>(
     const options: AxiosRequestConfig = {
         method: "PUT",
         headers: headers,
-        data: JSON.stringify(data),
+        data: data instanceof FormData ? data : JSON.stringify(data),
     };
 
     return await apiBase<TResult>(url, options);

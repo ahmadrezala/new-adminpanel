@@ -15,7 +15,7 @@ const sizeClasses: Record<Size, string> = {
 const Filebox: React.FC<FileboxProps> = forwardRef<
   HTMLInputElement,
   FileboxProps
->(({ variant = "ghost", label, className, size = "normal", ...rest }, ref) => {
+>(({ variant = "white", label, className, size = "normal", ...rest }, ref) => {
   const classes = classNames(
     "file-input",
     "w-full",
@@ -36,7 +36,7 @@ const Filebox: React.FC<FileboxProps> = forwardRef<
       <div id="file" onClick={(e) => handleClick(e)} className={classes}>
         <input type="file" ref={ref} className="hidden" {...rest} />
         <div>انتخاب فایل</div>
-        <IconUpload />
+        <IconUpload color="black" />
       </div>
     </div>
   );

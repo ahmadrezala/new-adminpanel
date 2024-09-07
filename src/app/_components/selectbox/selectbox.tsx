@@ -16,7 +16,7 @@ const SelectBox: React.FC<SelectBoxProps> = forwardRef<
   SelectBoxProps
 >(
   (
-    { options, variant = "ghost", label, className, size = "normal", ...rest },
+    { options, variant = "white", label, className, size = "normal", ...rest },
     ref
   ) => {
     const classes = classNames(
@@ -34,13 +34,13 @@ const SelectBox: React.FC<SelectBoxProps> = forwardRef<
           <option selected value="">
             انتخاب کنید...
           </option>
-          {options.map((option) => (
+          {options && options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </select>
-        <IconChevronLeft className="absolute left-[16px] rotate-[-90deg] bottom-[12px]" />
+        {/* <IconChevronLeft className="absolute left-[16px] rotate-[-90deg] bottom-[12px]" /> */}
       </div>
     );
   }

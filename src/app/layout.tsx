@@ -2,6 +2,8 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import LocalFont from "next/font/local";
 import QuertProvider from "@/providers/react-query-provider";
+import { Notifications } from "./_components/notification/notifications";
+import AuthProvider from "@/providers/auth-provider";
 
 const inter = Inter({
   display: "swap",
@@ -38,12 +40,15 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="fa"
       dir="rtl"
       className={`dark ${inter.variable} ${yekanbakh.variable}`}
     >
       <body className=" dark:bg-black dark:text-white ">
-        <QuertProvider>{children}</QuertProvider>
+        <Notifications />
+        <AuthProvider>
+          <QuertProvider>{children}</QuertProvider>
+        </AuthProvider>
       </body>
     </html>
   );

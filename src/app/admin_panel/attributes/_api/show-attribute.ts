@@ -2,19 +2,37 @@ import { readData } from "@/core/http-service/http-service";
 
 import { useQuery } from "react-query";
 import { ShowAttribute } from "../_types/attribute.interface";
+import { AxiosHeaders } from "axios";
+import { getSession, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 export type getAttributesOptions = {
     id: number
+    token?: string
 }
 
-const getAttributes = ({ id }: getAttributesOptions): Promise<ShowAttribute> => {
+const getAttributes = ({ id, token }: getAttributesOptions): Promise<ShowAttribute> => {
 
-    const url = `/attributes/${id}`;
-    return readData(url);
+    const url = `admin/attributes/${id}`;
+    const headers = new AxiosHeaders();
+    headers.set('Authorization', `Bearer ${token}`);
+    return readData(url, headers);
 
 }
 
 export const useAttribute = ({ id }: getAttributesOptions) => {
+    const [token, setToken] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            const session = await getSession()
+
+            setToken(session?.user?.accessToken);
+        }
+        fetchSession();
+
+
+    }, []);
 
     const {
         data,
@@ -29,7 +47,13 @@ export const useAttribute = ({ id }: getAttributesOptions) => {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
         queryKey: ['attributes', id],
-        queryFn: () => getAttributes({ id })
+        queryFn: () => {
+            if (token) {
+                return getAttributes({ id, token });
+            }
+            return Promise.reject(new Error("Token not available"));
+        },
+        enabled: !!token,
 
     })
 

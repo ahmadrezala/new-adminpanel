@@ -48,7 +48,7 @@ const UpdateForm: React.FC<UpdateFormProps> = ({
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && data ? (
         <TextPlaceholder />
       ) : (
         <form className="mt-[18px]" onSubmit={handleSubmit(onSubmit)}>

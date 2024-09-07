@@ -48,7 +48,13 @@ const Brands: React.FC = () => {
   );
 
   const renderSearchInput = useCallback(
-    () => <Textbox placeholder="جست و جو..." onChange={handleSearchChange} />,
+    () => (
+      <Textbox
+        variant="ghost"
+        placeholder="جست و جو..."
+        onChange={handleSearchChange}
+      />
+    ),
     [handleSearchChange]
   );
 

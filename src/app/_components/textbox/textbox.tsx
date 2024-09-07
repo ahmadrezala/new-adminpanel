@@ -17,8 +17,7 @@ export const Textbox: React.FC<TextboxProps> = forwardRef<
 >(
   (
     {
-      variant = "ghost",
-      type = "text",
+      variant = "white",
       label,
       className,
       size = "normal",
@@ -36,7 +35,7 @@ export const Textbox: React.FC<TextboxProps> = forwardRef<
     return (
       <>
         <label className="mb-2" htmlFor="">{label}</label>
-        <input ref={ref} type={type} className={classes} {...rest} />
+        <input ref={ref} className={classes} {...rest} />
       </>
     );
   }

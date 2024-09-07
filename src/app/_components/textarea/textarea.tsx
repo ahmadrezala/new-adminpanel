@@ -17,7 +17,7 @@ HTMLTextAreaElement,
 >(
   (
     {
-      variant = "ghost",
+      variant = "white",
       label,
       className,
       size = "normal",

@@ -8,5 +8,5 @@ export type FileInputProps<TFormValues extends FieldValues> = Omit<FileboxProps,
     register: UseFormRegister<TFormValues>,
     name: Path<TFormValues>,
     rules?: RegisterOptions,
-    errors: Partial<DeepMap<TFormValues, FieldError>>
+    errors: Partial<DeepMap<TFormValues, FieldError>> | any 
 }

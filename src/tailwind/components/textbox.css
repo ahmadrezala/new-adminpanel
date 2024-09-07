@@ -8,6 +8,6 @@
     @apply border-[1px] border-solid bg-transparent text-white border-charcoal;
   }
   &-error {
-    @apply border-[1px] border-solid border-error;
+    @apply border-[1px] border-solid text-black bg-white border-error;
   }
 }

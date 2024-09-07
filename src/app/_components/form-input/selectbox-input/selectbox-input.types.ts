@@ -8,5 +8,5 @@ export type SelectBoxInputProps<TFormValues extends FieldValues> = Omit<SelectBo
     register: UseFormRegister<TFormValues>,
     name: Path<TFormValues>,
     rules?: RegisterOptions,
-    errors: Partial<DeepMap<TFormValues, FieldError>>
+    errors: Partial<DeepMap<TFormValues, FieldError>> | any 
 }

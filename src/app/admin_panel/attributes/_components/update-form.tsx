@@ -26,6 +26,8 @@ const UpdateForm: React.FC<UpdateFormProps> = ({
     : parseInt(params.id);
 
   const name = data?.name || "";
+ 
+  
 
   const {
     register,
@@ -48,7 +50,7 @@ const UpdateForm: React.FC<UpdateFormProps> = ({
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && data ? (
         <TextPlaceholder />
       ) : (
         <form className="mt-[18px]" onSubmit={handleSubmit(onSubmit)}>

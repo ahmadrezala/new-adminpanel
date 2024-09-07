@@ -17,7 +17,6 @@ const CreateForm: React.FC = () => {
 
   const { data, isFetching, error, refetch } = useItemCreateCategory();
 
-  // console.log(data?.data[0]);
 
   const AttributeList: Options[] =
     data?.data && Array.isArray(data.data.attributes)
@@ -123,7 +122,6 @@ const CreateForm: React.FC = () => {
           label="وضعیت"
           register={register}
           name="is_active"
-          variant="ghost"
         />
         <SelectBoxInput
           options={CategoryList}
@@ -131,7 +129,6 @@ const CreateForm: React.FC = () => {
           label="دسته والد"
           register={register}
           name="parent_id"
-          variant="ghost"
         />
 
         <MultiSelectBox
@@ -153,7 +150,6 @@ const CreateForm: React.FC = () => {
           label="ویزگی متغیر"
           register={register}
           name="variation_id"
-          variant="ghost"
         />
       </div>
 

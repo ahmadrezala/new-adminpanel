@@ -59,7 +59,7 @@ const UpdateForm: React.FC<UpdateFormProps> = ({
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && data ? (
         <TextPlaceholder />
       ) : (
         <form className="mt-[18px]" onSubmit={handleSubmit(onSubmit)}>
@@ -90,7 +90,6 @@ const UpdateForm: React.FC<UpdateFormProps> = ({
               register={register}
               defaultValue={is_active ? 1 : 0}
               name={"is_active"}
-              variant="ghost"
             />
           </div>
 

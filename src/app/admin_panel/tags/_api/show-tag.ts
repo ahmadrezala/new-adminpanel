@@ -1,19 +1,38 @@
 import { readData } from "@/core/http-service/http-service";
 import { useQuery } from "react-query";
 import { ShowTag } from "../_types/tag.interface";
+import { AxiosHeaders } from "axios";
+import { useEffect, useState } from "react";
+import { getSession } from "next-auth/react";
 
 export type getTagsOptions = {
     id: number
+    token?: string
 }
 
-const getTags = ({ id }: getTagsOptions): Promise<ShowTag> => {
+const getTags = ({ id , token }: getTagsOptions): Promise<ShowTag> => {
 
-    const url = `/tags/${id}`;
-    return readData(url);
+
+    const url = `admin/tags/${id}`;
+    const headers = new AxiosHeaders();
+    headers.set('Authorization', `Bearer ${token}`);
+    return readData(url, headers);
 
 }
 
 export const useTag = ({ id }: getTagsOptions) => {
+    const [token, setToken] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            const session = await getSession()
+
+            setToken(session?.user?.accessToken);
+        }
+        fetchSession();
+
+
+    }, []);
 
     const {
         data,
@@ -28,7 +47,13 @@ export const useTag = ({ id }: getTagsOptions) => {
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
         queryKey: ['tags', id],
-        queryFn: () => getTags({ id })
+        queryFn: () => {
+            if (token) {
+                return getTags({ id, token });
+            }
+            return Promise.reject(new Error("Token not available"));
+        },
+        enabled: !!token,
 
     })
 

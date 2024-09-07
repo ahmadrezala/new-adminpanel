@@ -2,11 +2,15 @@ import { updateData } from "@/core/http-service/http-service";
 import { queryClient } from "@/lib/react-query";
 import { useMutation } from "react-query";
 import { AddTag } from "../_types/tag.interface";
+import { useEffect, useState } from "react";
+import { getSession } from "next-auth/react";
+import { AxiosHeaders } from "axios";
 
 
 type UpdateTagOptions = {
     id: number | string;
     data: AddTag
+    token?: string
 
 
 };
@@ -22,14 +26,34 @@ type QueryData = {
     };
 };
 
-const updateTag = ({ id, data }: UpdateTagOptions): Promise<void> => {
+const updateTag = ({ id, data, token }: UpdateTagOptions): Promise<void> => {
+    const headers = new AxiosHeaders();
+    headers.set('Authorization', `Bearer ${token}`);
+    return updateData(`admin/tags/${id}`, data, headers);
 
-    return updateData(`/tags/${id}`, data);
+  
 };
 
 export const useUpdateTag = () => {
+    const [token, setToken] = useState<string | undefined>(undefined);
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            const session = await getSession()
+
+            setToken(session?.user?.accessToken);
+        }
+        fetchSession();
+
+
+    }, []);
     const { mutate, isLoading } = useMutation({
-        mutationFn: updateTag,
+        mutationFn: ({ id, data }: Omit<UpdateTagOptions, 'token'>) => {
+            if (token) {
+                return updateTag({ id, data, token });
+            }
+            return Promise.reject(new Error("Token not available"));
+        },
         onSuccess: async (_, variables) => {
 
 

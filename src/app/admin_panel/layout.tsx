@@ -5,6 +5,13 @@ import { Sidebar } from "../_components/sidebar/sidebar";
 import { Header } from "../_components/header";
 import Footer from "../_components/footer/footer";
 import { Notifications } from "../_components/notification/notifications";
+import { auth } from "@/auth";
+import { getSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
+
+
+
 
 const inter = Inter({
   display: "swap",
@@ -34,11 +41,23 @@ const yekanbakh = LocalFont({
   variable: "--font-yekanbakh",
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ 
+
+  const session = await auth()
+  if(session){
+
+    console.log(session);
+    
+  }
+
+
+
+
   return (
     <main className=" grid grid-cols-[300px_1fr]  dark:bg-black dark:text-white ">
         <Notifications />

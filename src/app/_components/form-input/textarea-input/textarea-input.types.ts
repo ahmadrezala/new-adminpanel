@@ -8,5 +8,5 @@ export type TextareaInputProps<TFormValues extends FieldValues> = Omit<TextareaP
     register: UseFormRegister<TFormValues>,
     name: Path<TFormValues>,
     rules?: RegisterOptions,
-    errors: Partial<DeepMap<TFormValues, FieldError>>
+    errors: Partial<DeepMap<TFormValues, FieldError>> | any 
 }

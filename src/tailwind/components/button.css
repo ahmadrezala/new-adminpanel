@@ -45,6 +45,6 @@
     @apply py-[10px] px-[15px] text-[12px];
   }
   &-lg {
-    @apply py-[18px] px-[30px] text-[12px];
+    @apply py-[16px] px-[30px] text-[14px];
   }
 }

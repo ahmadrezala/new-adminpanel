@@ -2,15 +2,15 @@
 import React from "react";
 import UpdateForm from "../../_components/update-form";
 import { useParams } from "next/navigation";
-import { useBrand } from "../../_api/show-category";
+import { useCategory } from "../../_api/show-category";
 
-export default function UpdateBrand() {
+export default function UpdateCategory() {
   const params = useParams();
   const id = Array.isArray(params.id)
     ? parseInt(params.id[0])
     : parseInt(params.id);
 
-  const { data: brand, isFetching} = useBrand({ id });
+  const { data: category, isFetching} = useCategory({ id });
 
 
   return (
@@ -19,7 +19,7 @@ export default function UpdateBrand() {
         <div className="text-white text-[20px] pb-[20px] border-b-[1px] border-solid border-charcoal">
           تغییر برند
         </div>
-        <UpdateForm data={brand?.data} isLoading={isFetching} />
+        <UpdateForm data={category?.data} isLoading={isFetching} />
       </div>
     </section>
   );

@@ -5,10 +5,10 @@
   
   
     &-white {
-      @apply border-[1px] border-solid w-full py-[8px] px-[16px] rounded-[100px]  h-[48px] bg-white text-black;
+      @apply border-[1px] border-solid w-full py-[8px] px-[16px] rounded-[100px]  min-h-[48px]  bg-white text-black;
     }
     &-ghost {
-      @apply border-[1px] appearance-none w-full py-[8px] px-[16px] rounded-[100px]  h-[48px]  border-solid bg-dark-navy text-white border-charcoal;
+      @apply border-[1px] appearance-none w-full py-[8px] px-[16px] rounded-[100px]  min-h-[48px]  border-solid bg-dark-navy text-white border-charcoal;
     }
     &-error {
       @apply border-[1px] border-solid w-full py-[8px] px-[16px] rounded-[100px]  h-[48px] border-error;

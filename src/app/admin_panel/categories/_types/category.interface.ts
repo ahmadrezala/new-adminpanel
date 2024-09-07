@@ -39,11 +39,16 @@ export interface CategoryList {
 export interface ShowCategory {
     data?: {
         id: number,
+        parent_id: number,
         name: string,
         slug: string,
+        description: string,
         is_active: boolean,
         image: string,
         created_at: string,
+        attributes:[]
+        attributes_is_filter:[]
+        attributes_is_variation:number
     };
 }
 
